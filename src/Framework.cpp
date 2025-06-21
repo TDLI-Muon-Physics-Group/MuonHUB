@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 
-Framework::Framework(const std::string& configInput, const std::vector<std::string>& pluginNames, const bool submitCondor, const bool fitCalorimeter)
-  : configInput(configInput), pluginNames(pluginNames), submitCondor(submitCondor), fitCalorimeter(fitCalorimeter) {}
+Framework::Framework(const std::string& configInput, const std::vector<std::string>& pluginNames, const bool submitCondor)
+  : configInput(configInput), pluginNames(pluginNames), submitCondor(submitCondor) {}
 
 std::string Framework::getCurrentWorkingDirectory() {
   char temp[PATH_MAX];
@@ -38,7 +38,7 @@ bool Framework::execute() {
       return false;
     }
     
-    if (!plugin->initialize( currentConfigInput , fitCalorimeter)) {
+    if (!plugin->initialize( currentConfigInput )) {
       std::cerr << "Plugin " << pluginNames.at(i) << " failed to initialize." << std::endl;
       return false;
     }

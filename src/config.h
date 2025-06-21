@@ -3,7 +3,8 @@
 
 // Define the Params struct with fields corresponding to the parameters in the file                                                                                                      
 struct Config {
-  // global parameter                                                                                                                                                                    
+  // global parameter
+  std::string dataset;
   std::string inputFile;
   std::string subrun;
   // tracker                                                                                                                                                                             

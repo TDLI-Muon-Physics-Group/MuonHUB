@@ -23,12 +23,14 @@ class PluginBase {
 public:
   
   virtual ~PluginBase() = default;
-  virtual bool initialize(const std::string &paramsFile, const bool fitCalorimeter) = 0;
+  virtual bool initialize(const std::string &paramsFile) = 0;
   //virtual bool initialize(const std::string &paramsFile) = 0;
   virtual bool process() = 0;
   virtual bool finalize() = 0;
   std::string removeWhitespace(const std::string& str);
   Config loadParams(const std::string &paramsFile);
+  bool isTxt(const std::string& filename);
+  
   std::vector<std::string> getListOfFiles(std::string path, std::string match ) const;
   std::vector<std::string> getListOfFiles(std::string path, std::unordered_set<std::string> excludedRuns) const;
   std::string getCurrentWorkingDirectory() const;
@@ -85,6 +87,15 @@ inline Config PluginBase::loadParams(const std::string &paramsFile) {
       // Remove leading whitespace from value
       value.erase(0, value.find_first_not_of(" \t"));
       std::string key = removeWhitespace(key_);
+      if (key == "dataset") {
+	params_out.dataset = value;
+	//params_out.filein = getCurrentWorkingDirectory() + "/" + value;
+      }
+
+      /*
+      // Remove leading whitespace from value
+      value.erase(0, value.find_first_not_of(" \t"));
+      std::string key = removeWhitespace(key_);
       if (key == "minEn") {
         params_out.minEn = std::stof(value);
       } else if (key == "maxEn") {
@@ -118,10 +129,20 @@ inline Config PluginBase::loadParams(const std::string &paramsFile) {
       } else if (key == "excluRun") {
 	params_out.excluRun = value;
       }
+      */
     }
   }
   file.close();
   return params_out;
+}
+
+inline bool isTxt(const std::string& filename) {
+    const std::string extension = ".txt";
+    // Check if the string ends with ".txt"
+    if (filename.length() >= extension.length()) {
+        return filename.compare(filename.length() - extension.length(), extension.length(), extension) == 0;
+    }
+    return false;
 }
 
 inline std::vector<std::string> PluginBase::getListOfFiles(std::string path, std::string match) const {

@@ -19,7 +19,7 @@
 
 class test : public PluginBase {
 public:
-  bool initialize(const std::string &paramsFile, const bool fitCalorimeter) override;
+  bool initialize(const std::string &paramsFile) override;
   bool process() override;
   bool finalize() override;
   

@@ -14,7 +14,7 @@ namespace fs = std::filesystem;
 
 class Framework {
 public:
-  Framework(const std::string& configInput, const std::vector<std::string>& pluginNames, const bool submitCondor,  const bool fitCalorimeter);
+  Framework(const std::string& configInput, const std::vector<std::string>& pluginNames, const bool submitCondor);
   std::string getCurrentWorkingDirectory();
   bool execute();
   
@@ -23,7 +23,6 @@ private:
   std::vector<std::string> pluginNames;
   std::vector<std::unique_ptr<PluginBase>> plugins;
   bool submitCondor;
-  bool fitCalorimeter;
 };
 
 #endif // FRAMEWORK_H

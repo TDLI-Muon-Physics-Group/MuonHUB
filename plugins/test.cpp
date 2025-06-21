@@ -1,6 +1,6 @@
 #include "test.h"
 
-bool test::initialize(const std::string &paramsFile , const bool fitCalorimeter=false) {
+bool test::initialize(const std::string &paramsFile) {
   
   prefix = "TrackResoCorr";
   
@@ -20,7 +20,6 @@ bool test::initialize(const std::string &paramsFile , const bool fitCalorimeter=
   std::cout << "  Reso: " << config.reso << std::endl;
   std::cout << "  subrun: " << config.subrun << std::endl;
   std::cout << "  inList: " << config.inputFile << std::endl;
-  std::cout << "  fitCalorimeter : " << fitCalorimeter << std::endl;
 
   // load full list of dataset
   iDataSets.open(config.inputFile);

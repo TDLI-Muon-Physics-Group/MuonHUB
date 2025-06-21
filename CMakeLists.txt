@@ -37,8 +37,8 @@ file(GLOB_RECURSE SRCS
 #)
 
 # Add executable
-add_executable(gm2 ${SRCS} ${DICT_FILE})
-target_link_libraries(gm2 ${ROOT_LIBRARIES})
+add_executable(uconvert ${SRCS} ${DICT_FILE})
+target_link_libraries(uconvert ${ROOT_LIBRARIES})
 
 # Output in build/bin
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
