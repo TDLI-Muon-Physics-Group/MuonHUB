@@ -14,8 +14,6 @@
 #include <TRandom3.h>
 #include <iostream>
 
-#include "paths.h"
-
 // all analyzer 
 #include "anaDT5702.h"
 
@@ -31,13 +29,9 @@ public:
 private:
   std::string prefix;
   Config config;
-  TFile *input;
-  TFile *output;
   
   std::ifstream iDataSets;
   std::vector<std::string> dataSets;
-  std::vector<std::string> enHigh;
-  std::map<std::string, float> resMap;
   
 };
 
