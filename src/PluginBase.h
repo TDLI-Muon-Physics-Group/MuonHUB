@@ -136,7 +136,7 @@ inline Config PluginBase::loadParams(const std::string &paramsFile) {
   return params_out;
 }
 
-inline bool isTxt(const std::string& filename) {
+inline bool PluginBase::isTxt(const std::string& filename) {
     const std::string extension = ".txt";
     // Check if the string ends with ".txt"
     if (filename.length() >= extension.length()) {
