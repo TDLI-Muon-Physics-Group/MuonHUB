@@ -1,9 +1,9 @@
-#include "DRS4.h"
+#include "picoScope.h"
 
-bool DRS4::initialize(const std::string &paramsFile) {
+bool picoScope::initialize(const std::string &paramsFile) {
 
   //
-  prefix = "DRS4_PostProc";
+  prefix = "picoScope_PostProc";
     
   // load param
   config = loadParams(paramsFile);
@@ -36,8 +36,11 @@ bool DRS4::initialize(const std::string &paramsFile) {
   return true; 
 }
 
-bool DRS4::process() {
+bool picoScope::process() {
 
+
+  //./CSV2root demo/20231228_7 10 6 20231228 (7)_01.csv 50
+  
   // loop on multiple files
   // set should be full path directory, and the file name
   for(auto set : dataSets){
@@ -70,6 +73,8 @@ bool DRS4::process() {
     std::string newFolder = directory + "/" + prefix +"/";
     if(!dirExists(newFolder.c_str()))
       gSystem->mkdir(newFolder.c_str(), kTRUE);
+
+    // newFolder + outfname
 
     cout << ">> Start reading file" << set << " ......" << endl;
     cout << endl;
@@ -451,7 +456,7 @@ bool DRS4::process() {
   return true;
 }
 
-bool DRS4::finalize() {
+bool picoScope::finalize() {
   
   std::cout << "test module completed successfully." << std::endl;
   return true;
