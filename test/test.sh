@@ -1,3 +1,7 @@
 #!/bin/bash
 
-./build/uconvert -c configs/template.cfg -m DT5702
+# DT5702
+#./build/uconvert -c configs/template_dt5702.cfg -m DT5702
+
+# DRS4
+./build/uconvert -c configs/template_drs4.cfg -m DRS4
