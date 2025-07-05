@@ -89,7 +89,10 @@ inline Config PluginBase::loadParams(const std::string &paramsFile) {
       std::string key = removeWhitespace(key_);
       if (key == "dataset") {
 	params_out.dataset = value;
-	//params_out.filein = getCurrentWorkingDirectory() + "/" + value;
+      }
+      else if (key == "makeRenameCopy") {
+	std::cout<<"makeRenameCopy value : " << value << std::endl;
+	params_out.makeRenameCopy = std::stoi(value);
       }
 
       /*

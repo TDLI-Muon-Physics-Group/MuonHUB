@@ -7,6 +7,8 @@ struct Config {
   std::string dataset;
   std::string inputFile;
   std::string subrun;
+  int makeRenameCopy;
+  
   // tracker                                                                                                                                                                             
   std::string reso;
   float minEn;
